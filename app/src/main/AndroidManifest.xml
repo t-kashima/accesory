@@ -14,6 +14,5 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.SecondActivity" />
-        <service android:name=".services.FeedbackService" />
     </application>
 </manifest>
