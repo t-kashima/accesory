@@ -7,7 +7,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        Satellite.init(this)
+        Satellite.with(this)
     }
 }
 
