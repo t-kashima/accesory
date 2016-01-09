@@ -1,58 +1,62 @@
 package com.unuuu.feedback
 
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.graphics.PixelFormat
-import android.view.WindowManager
+import android.view.*
 import android.widget.ImageView
 
 public class SatelliteLifecycleExecutor : MyActivityLifecycleCallbacks.LifecycleExecutor {
 
-    var imageView: ImageView
-    var windowManager: WindowManager
+    val view : View
+    val imageView : ImageView
+    val windowManager : WindowManager
 
     public constructor(context : Context) {
         windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-        imageView = ImageView(context)
-        imageView.scaleType = ImageView.ScaleType.FIT_CENTER
-        updateImage(context, R.drawable.suntv)
-    }
-
-    /**
-     * update the image using the drawable id.
-     *
-     * @param context context
-     * @param drawableId drawable id
-     */
-    public fun updateImage(context : Context, drawableId : Int) {
-        val options = BitmapFactory.Options()
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(context.resources, drawableId, options)
-        options.inJustDecodeBounds = false;
-        var scale : Int;
-        if (options.outWidth < options.outHeight) {
-            scale = options.outHeight / 40;
-        } else {
-            scale = options.outWidth / 40;
-        }
-        options.inSampleSize = scale;
-        val bitmap = BitmapFactory.decodeResource(context.resources, drawableId, options);
-        imageView.setImageBitmap(bitmap)
+        view = LayoutInflater.from(context).inflate(R.layout.overlay, null)
+        imageView = view.findViewById(R.id.overlay_image) as ImageView
     }
 
     override fun onForeground() {
         val windowLayoutParams = WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_TOAST,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
-                        WindowManager.LayoutParams.FLAG_FULLSCREEN or
-                        WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+                WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                        or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
+                        or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT)
-        windowManager.addView(imageView, windowLayoutParams)
+        windowLayoutParams.gravity = Gravity.TOP or Gravity.LEFT;
+        windowManager.addView(view, windowLayoutParams)
+
+        view.setOnTouchListener(View.OnTouchListener { view, event ->
+            if ((event.action == MotionEvent.ACTION_MOVE) or (event.action == MotionEvent.ACTION_DOWN)) {
+                val xOffset = view.width / 2
+                val yOffset = view.height
+                val x = (event.rawX - xOffset).toInt()
+                val y = (event.rawY - yOffset).toInt()
+                val params = WindowManager.LayoutParams(
+                        WindowManager.LayoutParams.WRAP_CONTENT,
+                        WindowManager.LayoutParams.WRAP_CONTENT,
+                        x,
+                        y,
+                        WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
+                        WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                                or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
+                                or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                        PixelFormat.TRANSLUCENT);
+                params.gravity = Gravity.TOP or Gravity.LEFT;
+                windowManager.updateViewLayout(view, params);
+                return@OnTouchListener true;
+            }
+            return@OnTouchListener false
+        })
     }
 
     override fun onBackground() {
-        windowManager.removeView(imageView);
+        windowManager.removeView(view);
+    }
+
+    public fun setOnClickListener(listener : (v : View) -> Unit) {
     }
 }
