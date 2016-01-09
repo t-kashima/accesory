@@ -9,15 +9,15 @@ import android.view.WindowManager
 
 public class SatelliteLifecycleExecutor : MyActivityLifecycleCallbacks.LifecycleExecutor {
 
-    var view: View? = null
-    var windowManager: WindowManager? = null
+    var view: View
+    var windowManager: WindowManager
 
     public constructor(context : Context) {
         windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         view = LayoutInflater.from(context).inflate(R.layout.overlay, null)
-        view?.setOnTouchListener(View.OnTouchListener { view, event ->
+        view.setOnTouchListener(View.OnTouchListener { view, event ->
             val rect = Rect()
-            view?.getHitRect(rect);
+            view.getHitRect(rect);
             return@OnTouchListener !rect.contains(event.x.toInt(), event.y.toInt())
         })
     }
@@ -31,10 +31,10 @@ public class SatelliteLifecycleExecutor : MyActivityLifecycleCallbacks.Lifecycle
                         WindowManager.LayoutParams.FLAG_FULLSCREEN or
                         WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
                 PixelFormat.TRANSLUCENT)
-        windowManager?.addView(view, params)
+        windowManager.addView(view, params)
     }
 
     override fun onBackground() {
-        windowManager?.removeView(view);
+        windowManager.removeView(view);
     }
 }
