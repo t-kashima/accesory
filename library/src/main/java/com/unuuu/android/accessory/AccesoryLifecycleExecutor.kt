@@ -73,19 +73,22 @@ public class AccesoryLifecycleExecutor : MyActivityLifecycleCallbacks.LifecycleE
     }
 
     /**
-     * show the view
+     * Show the view.
      */
     public fun show() {
         view.visibility = View.VISIBLE
     }
 
     /**
-     * dismiss the view
+     * Dismiss the view.
      */
     public fun dismiss() {
         view.visibility = View.GONE
     }
 
+    /**
+     * Set the image resource.
+     */
     public fun setImageResource(resourceId : Int) {
         imageView.setImageResource(resourceId)
     }

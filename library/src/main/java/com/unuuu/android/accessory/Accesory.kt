@@ -6,6 +6,9 @@ public object Accesory {
 
     var executor : AccesoryLifecycleExecutor? = null
 
+    /**
+     * initialize the accesory.
+     */
     public fun init(application : Application, resourceId : Int) {
         var lifecycleCallbacks = MyActivityLifecycleCallbacks()
         executor = AccesoryLifecycleExecutor(application.applicationContext)
@@ -14,16 +17,22 @@ public object Accesory {
         executor?.setImageResource(resourceId)
     }
 
+    /**
+     * Show the accesory.
+     */
     public fun show() {
         executor?.show()
     }
 
+    /**
+     * Dismiss the accesory.
+     */
     public fun dismiss() {
         executor?.dismiss()
     }
 
     /**
-     * This listener when you click the satellite.
+     * This listener is called when you click on the accesory.
      */
     public fun setOnClickListener(listener : () -> Unit) {
         executor?.setOnClickListener(listener)
