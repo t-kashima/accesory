@@ -9,7 +9,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        Accesory.with(this).setImageResource(R.drawable.suntv)
+        Accesory.init(this, R.drawable.suntv)
     }
 }
 

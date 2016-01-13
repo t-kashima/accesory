@@ -2,46 +2,31 @@ package com.unuuu.android.accessory
 
 import android.app.Application
 
-public class Accesory {
+public object Accesory {
 
-    private var executor : AccesoryLifecycleExecutor
+    var executor : AccesoryLifecycleExecutor? = null
 
-    private constructor(application: Application) {
+    public fun init(application : Application, resourceId : Int) {
         var lifecycleCallbacks = MyActivityLifecycleCallbacks()
         executor = AccesoryLifecycleExecutor(application.applicationContext)
-        lifecycleCallbacks.addLifecycleExecutor(executor)
+        lifecycleCallbacks.addLifecycleExecutor(executor!!)
         application.registerActivityLifecycleCallbacks(lifecycleCallbacks)
-    }
-
-    companion object {
-        private var accesory : Accesory? = null
-
-        fun with(application: Application) : Accesory {
-            // singleton pattern
-            if (accesory == null) {
-                accesory = Accesory(application)
-            }
-            return accesory!!
-        }
+        executor?.setImageResource(resourceId)
     }
 
     public fun show() {
-        executor.show()
+        executor?.show()
     }
 
     public fun dismiss() {
-        executor.dismiss()
-    }
-
-    public fun setImageResource(resourceId : Int) {
-        executor.setImageResource(resourceId)
+        executor?.dismiss()
     }
 
     /**
      * This listener when you click the satellite.
      */
     public fun setOnClickListener(listener : () -> Unit) {
-        executor.setOnClickListener(listener)
+        executor?.setOnClickListener(listener)
     }
 }
 
