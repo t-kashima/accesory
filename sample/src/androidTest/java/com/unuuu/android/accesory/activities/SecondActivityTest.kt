@@ -44,7 +44,7 @@ class SecondActivityTest : ActivityInstrumentationTestCase2<SecondActivity> {
     public fun testAccesoryIsDisplayed() {
         // change the view in ui thread
         activity.runOnUiThread {
-            Accesory.with(activity.application).show()
+            Accesory.show()
         }
         // wait for the ui thread to finish
         instrumentation.waitForIdleSync()
