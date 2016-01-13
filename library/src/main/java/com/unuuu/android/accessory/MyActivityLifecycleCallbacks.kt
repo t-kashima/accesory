@@ -7,7 +7,7 @@ import java.util.*
 
 public class MyActivityLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
 
-    private var lifecycleExecutors = ArrayList<LifecycleExecutor>()
+    private val lifecycleExecutors = ArrayList<LifecycleExecutor>()
 
     private var runningCount = 0;
 

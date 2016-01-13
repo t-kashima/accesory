@@ -10,7 +10,7 @@ public object Accesory {
      * initialize the accesory.
      */
     public fun init(application : Application, resourceId : Int) {
-        var lifecycleCallbacks = MyActivityLifecycleCallbacks()
+        val lifecycleCallbacks = MyActivityLifecycleCallbacks()
         executor = AccesoryLifecycleExecutor(application.applicationContext)
         lifecycleCallbacks.addLifecycleExecutor(executor!!)
         application.registerActivityLifecycleCallbacks(lifecycleCallbacks)
