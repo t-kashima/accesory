@@ -1,4 +1,4 @@
-package com.unuuu.android.accessory
+package com.unuuu.android.accesory
 
 import android.content.Context
 import android.graphics.PixelFormat

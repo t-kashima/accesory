@@ -28,7 +28,7 @@ class MainActivityTest : ActivityInstrumentationTestCase2<MainActivity> {
     constructor() : super(MainActivity::class.java) {
     }
 
-    private var windowManager: WindowManager? = null;
+    private var windowManager : WindowManager? = null
 
     @Before
     override public fun setUp() {

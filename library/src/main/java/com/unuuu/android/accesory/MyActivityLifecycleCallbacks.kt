@@ -1,4 +1,4 @@
-package com.unuuu.android.accessory
+package com.unuuu.android.accesory
 
 import android.app.Activity
 import android.app.Application

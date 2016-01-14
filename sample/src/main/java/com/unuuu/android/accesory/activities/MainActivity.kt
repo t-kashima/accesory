@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import com.unuuu.andorid.accesory.R
-import com.unuuu.android.accessory.Accesory
+import com.unuuu.android.accesory.Accesory
 
 class MainActivity : AppCompatActivity() {
 

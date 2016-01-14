@@ -11,7 +11,7 @@ import android.support.test.runner.AndroidJUnit4
 import android.test.ActivityInstrumentationTestCase2
 import android.view.WindowManager
 import com.unuuu.andorid.accesory.R
-import com.unuuu.android.accessory.Accesory
+import com.unuuu.android.accesory.Accesory
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.not
 import org.junit.After
@@ -24,7 +24,7 @@ class SecondActivityTest : ActivityInstrumentationTestCase2<SecondActivity> {
     constructor() : super(SecondActivity::class.java) {
     }
 
-    private var windowManager: WindowManager? = null;
+    private var windowManager : WindowManager? = null
 
     @Before
     override public fun setUp() {
