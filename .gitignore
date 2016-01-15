@@ -7,3 +7,6 @@
 .DS_Store
 /build
 /captures
+/vendor
+.bundle
+Gemfile.lock
