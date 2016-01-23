@@ -1,4 +1,4 @@
-package com.unuuu.android.accesory.activities
+package com.unuuu.android.accesory.sample.activities
 
 import android.content.Context
 import android.support.test.InstrumentationRegistry
@@ -10,7 +10,7 @@ import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.runner.AndroidJUnit4
 import android.test.ActivityInstrumentationTestCase2
 import android.view.WindowManager
-import com.unuuu.andorid.accesory.R
+import com.unuuu.android.accesory.R
 import com.unuuu.android.accesory.Accesory
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.not
