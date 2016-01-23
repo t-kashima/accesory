@@ -19,5 +19,3 @@ class App : Application() {
     }
 }
 ```
-
-![Sample](https://gyazo.com/fbe0a589532b6a36cd47c4bea1ff7097)
