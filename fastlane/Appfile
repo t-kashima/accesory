@@ -1,3 +1,0 @@
-issuer "" # Follow https://github.com/fastlane/supply#setup to get one
-keyfile "" # Path to the keyfile
-package_name "com.unuuu.android.accesory" # e.g. com.krausefx.app
