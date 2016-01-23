@@ -2,6 +2,8 @@ Accesory
 ============
 Android library for displaying a draggable image through application.
 
+<img src="https://i.gyazo.com/fbe0a589532b6a36cd47c4bea1ff7097.gif" width="300">
+
 Example
 -------
 
@@ -17,3 +19,5 @@ class App : Application() {
     }
 }
 ```
+
+![Sample](https://gyazo.com/fbe0a589532b6a36cd47c4bea1ff7097)
