@@ -34,23 +34,23 @@ class SecondActivityTest : ActivityInstrumentationTestCase2<SecondActivity> {
     }
 
     @Test
-    public fun testAccesoryIsNotDisplayed() {
+    public fun testAccesoryIsDisplayed() {
         onView(withId(R.id.overlay_image))
                 .inRoot(withDecorView(`not`(`is`(activity.window.decorView))))
-                .check(matches(not(isDisplayed())))
+                .check(matches(isDisplayed()))
     }
 
     @Test
-    public fun testAccesoryIsDisplayed() {
+    public fun testAccesoryIsNotDisplayed() {
         // change the view in ui thread
         activity.runOnUiThread {
-            Accesory.show()
+            Accesory.dismiss()
         }
         // wait for the ui thread to finish
         instrumentation.waitForIdleSync()
         onView(withId(R.id.overlay_image))
                 .inRoot(withDecorView(`not`(`is`(activity.window.decorView))))
-                .check(matches(isDisplayed()))
+                .check(matches(not(isDisplayed())))
     }
 
     @After

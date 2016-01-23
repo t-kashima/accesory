@@ -11,5 +11,3 @@ class App : Application() {
         Accesory.init(this, R.drawable.suntv)
     }
 }
-
-
