@@ -19,3 +19,10 @@ class App : Application() {
     }
 }
 ```
+
+Download
+-------
+
+```groovy
+compile 'com.unuuu.android.acccesory:accesory:1.0.0'
+```
