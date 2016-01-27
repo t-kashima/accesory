@@ -45,7 +45,7 @@ dependencies {
 publish {
     artifactId = 'accesory'
     desc = 'Android library for displaying a draggable image through application.'
-    groupId = 'com.unuuu.android.acccesory'
+    groupId = 'com.unuuu.android.accesory'
     publishVersion = "1.0.0"
     website = 'https://github.com/t-kashima/accesory'
     repository = 'git@github.com:t-kashima/accesory.git'

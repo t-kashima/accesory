@@ -24,5 +24,5 @@ Download
 -------
 
 ```groovy
-compile 'com.unuuu.android.acccesory:accesory:1.0.0'
+compile 'com.unuuu.android.accesory:accesory:1.0.0'
 ```
